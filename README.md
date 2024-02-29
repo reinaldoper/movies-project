@@ -3,7 +3,7 @@
 ### Clonar o projeto:
 
 ```shell
-git clone git@github.com:reinaldoper/school.git
+git clone git@github.com:reinaldoper/movies-project.git
 ```
 `cd movies`
 
