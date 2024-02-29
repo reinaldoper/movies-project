@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Press+Start+2P&display=swap');
+
+
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  font-family: "Crimson Text", serif;
+}
+
+li {
+  list-style: none;
+}
+
+#filter{
+  padding: 10px;
+  margin-right: 10px;
+}
+
+.imagem-container {
+  position: relative;
+  overflow: hidden;
+  width: 15%; 
+  margin: 0 auto; 
+}
+
+.imagem {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  transition: transform 0.3s ease;
+}
+
+.imagem-container:hover .imagem {
+  transform: scale(1.5);
+}
+
+#button-filter{
+  margin-right: 10px;
+}
+
+.title-grid:hover{
+  color: black;
+}
+
+.overview-grid{
+  font-size: small;
+}
+
+.overview-grid:hover{
+  color: black;
+  font-size: larger;
+}
+
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
