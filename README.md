@@ -71,5 +71,7 @@ As dependências do projeto estão listadas no arquivo package.json. Certifique-
 ```
 ### Agradeço pelo apoio!
 
+[link-deploy](https://movies-project-gamma.vercel.app/)
+
 - reinaldodev
 
