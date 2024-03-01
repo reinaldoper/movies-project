@@ -35,6 +35,7 @@ escola-front/
 |   |-- routes/
 |   |-- types/
 |   |-- environment/
+|   |-- utils/
 |   |-- tests/
 |-- main.tsx
 |-- tsconfig.json
@@ -54,6 +55,7 @@ escola-front/
 - types/: Todas as tipagens da aplicação.
 - buttons/: Alguns buttons da aplicação
 - tests/: Todos os testes da aplicação.
+- utils/: Switch case.
 - main.tsx: Ponto de partida da aplicação.
 - tsconfig.json: Configurações TypeScript.
 - package.json: Dependências e scripts do projeto.
