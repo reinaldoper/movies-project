@@ -43,7 +43,13 @@ describe('Should return Search component.', () => {
     await waitFor(() => {
       const batman = screen.getAllByText('Batman');
       expect(batman[0]).toBeInTheDocument();
+
+      const resetButton = screen.getByText('Reset');
+      expect(resetButton).toBeInTheDocument();
+
+      fireEvent.click(resetButton);
     })
+
   });
 
 })
