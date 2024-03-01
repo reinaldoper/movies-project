@@ -7,6 +7,7 @@ import { GridPageChangeEvent } from '@progress/kendo-react-grid';
 import { urlImage } from '../environment/environment'
 import ButtonFilter from '../buttons/ButtonFilter';
 import ButtonReset from '../buttons/ButtonReset';
+import { format } from 'date-fns/format';
 
 import '../styles/App.css'
 
@@ -25,8 +26,8 @@ function App() {
 
   useEffect(() => {
     const fetchMovies = async () => {
-      const result = await fetchMoviesTop();
-      setMovies(result.results);
+      const { results } = await fetchMoviesTop();
+      setMovies(results);
     };
 
     fetchMovies();
@@ -60,14 +61,14 @@ function App() {
       {movies.length === 0 && <h1>Loading...</h1>}
       {movies.length > 0 && (
         <>
-        <h1>Movies</h1>
-          <div>
-            <label htmlFor="filter">Title filter: </label>
-            <input type="text" id="filter" value={filterValue} onChange={handleFilterChange} />
+          <h1>Movies</h1>
+          <div className="w3-bar">
+            <label htmlFor="filter" className="w3-bar-item">Title filter: </label>
+            <input type="text" id="filter" value={filterValue} onChange={handleFilterChange} className="w3-bar-item w3-input" />
             <ButtonFilter onClick={handleFilterClick} name='Filter' />
             <ButtonReset onClick={handleResetFilters} name='Reset' />
           </div>
-          <Grid
+          <Grid className='container-grid w3-responsive'
             data={applyFilters().slice(skip, skip + 5)}
             style={{ height: '400px' }}
             resizable={true}
@@ -77,12 +78,18 @@ function App() {
             total={applyFilters().length}
             onPageChange={handlePageChange}
           >
-            <GridColumn className='title-grid' field="title" title="Title" />
+            <GridColumn className='overview-grid' field="title" title="Title" />
             <GridColumn field="backdrop_path" title="Backdrop" cell={BackdropCell} />
-            <GridColumn className='title-grid' field="release_date" title="Release Date" />
-            <GridColumn className='title-grid' field="original_language" title="Language" />
-            <GridColumn className='overview-grid' field="overview" title="Overview" />
-            <GridColumn className='title-grid' field="vote_average" title="Vote Average" />
+            <GridColumn field="release_date"
+              title="Release Date"
+              cell={(props) => (
+                <td className='overview-grid'>
+                  {format(new Date(props.dataItem.release_date), 'dd/MM/yyyy')}
+                </td>
+              )} />
+            <GridColumn className='overview-grid' field="original_language" title="Language" />
+            <GridColumn className='overview-grid' field="genre_ids" title="Genre_ids" />
+            <GridColumn className='overview-grid' field="vote_average" title="Vote Average" />
           </Grid>
         </>
       )}

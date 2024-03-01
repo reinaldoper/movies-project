@@ -6,6 +6,11 @@ import { urls } from '../environment/environment';
 
 export const fetchMoviesTop = async () => {
   const response = await fetch(urls)
-  const movies = response.json()
-  return movies
+  try {
+    const movies = await response.json();
+    return movies;
+  } catch (error) {
+    console.log('Error parsing JSON:', error);
+    return null; 
+  }
 }
