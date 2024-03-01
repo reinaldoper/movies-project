@@ -63,12 +63,11 @@ function App() {
         <>
           <h1>Movies</h1>
           <div className="w3-bar">
-            <label htmlFor="filter" className="w3-bar-item">Title filter: </label>
-            <input type="text" id="filter" value={filterValue} onChange={handleFilterChange} className="w3-bar-item w3-input" />
+            <input type="text" id="filter" placeholder='Filter title' value={filterValue} onChange={handleFilterChange} className="w3-bar-item w3-input" />
             <ButtonFilter onClick={handleFilterClick} name='Filter' />
             <ButtonReset onClick={handleResetFilters} name='Reset' />
           </div>
-          <Grid className='container-grid w3-responsive'
+          <Grid
             data={applyFilters().slice(skip, skip + 5)}
             style={{ height: '400px' }}
             resizable={true}

@@ -38,6 +38,10 @@ li {
   transition: transform 0.3s ease;
 }
 
+.w3-bar{
+  margin-bottom: 10px;
+}
+
 .imagem-container:hover .imagem {
   transform: scale(1.5);
 }
@@ -53,6 +57,19 @@ li {
 .overview-grid{
   color: black;
   font-size: small;
+}
+
+.w3-teal {
+  background-image: url('../assets/background-movie.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 10vh; 
+  padding: 40px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-around;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px rgba(0,0,0);
 }
 
 .overview-grid:hover{
