@@ -67,7 +67,7 @@ const Search = () => {
         <>
           <Grid
             data={movies.slice(skip, skip + 5)}
-            style={{ height: '400px' }}
+            style={{ height: 'auto', width: '100%', overflowY: 'hidden' }}
             resizable={true}
             sortable={true}
             pageable={{ pageSizes: true, buttonCount: 5 }}
