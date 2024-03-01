@@ -13,6 +13,8 @@ git clone git@github.com:reinaldoper/movies-project.git
 
 ## Movies - Projeto ReactJS com TypeScript
 
+- Rodar os testes: `npm test`
+
 ### Introdução
 
 - O projeto Movies tem como objetivo usar a API do TMDB e listar os top-rated movies.

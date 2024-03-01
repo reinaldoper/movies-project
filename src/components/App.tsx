@@ -56,6 +56,8 @@ function App() {
     setFilterValue('');
   };
 
+  
+
   return (
     <>
       {movies.length === 0 && <h1>Loading...</h1>}
