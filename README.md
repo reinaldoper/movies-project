@@ -25,6 +25,7 @@ git clone git@github.com:reinaldoper/movies-project.git
 ```shell
 escola-front/
 |-- src/
+|   |-- .jest/
 |   |-- assets/
 |   |-- buttons/
 |   |-- components/
@@ -34,7 +35,7 @@ escola-front/
 |   |-- routes/
 |   |-- types/
 |   |-- environment/
-|   |-- testes/
+|   |-- tests/
 |-- main.tsx
 |-- tsconfig.json
 |-- package.json
@@ -42,6 +43,7 @@ escola-front/
 ```
 
 - src/: Contém os principais códigos fonte do projeto.
+- .jest/ Configuração do jest.
 - assets/: Contém as imgens do projeto.
 - components/: Componentes React reutilizáveis.
 - page/: Páginas da aplicação.
@@ -51,7 +53,7 @@ escola-front/
 - environment/: Variaveis.
 - types/: Todas as tipagens da aplicação.
 - buttons/: Alguns buttons da aplicação
-- testes/: Todos os testes da aplicação.
+- tests/: Todos os testes da aplicação.
 - main.tsx: Ponto de partida da aplicação.
 - tsconfig.json: Configurações TypeScript.
 - package.json: Dependências e scripts do projeto.
