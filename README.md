@@ -15,6 +15,8 @@ git clone git@github.com:reinaldoper/movies-project.git
 
 - Rodar os testes: `npm test`
 
+- Rodar o coverage: `npm run test:coverage`
+
 ### Introdução
 
 - O projeto Movies tem como objetivo usar a API do TMDB e listar os top-rated movies.

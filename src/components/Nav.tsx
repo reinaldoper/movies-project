@@ -6,7 +6,7 @@ const Nav = () => {
 
 
   return (
-    <div className='w3-container w3-teal'>
+    <div id='nav' className='w3-container w3-teal'>
       <ButtonNav name="/" title="HOME" />
       <ButtonNav name="/search" title="SEARCH" />
     </div>

@@ -3,15 +3,22 @@
 
 
 #root {
-  max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  box-sizing: border-box;
   text-align: center;
   font-family: "Crimson Text", serif;
 }
 
 li {
   list-style: none;
+}
+
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+  color: #646cff;
+  text-shadow: 5px 5px 5px rgba(255, 255, 255, 0.87);
 }
 
 .container-grid{
@@ -68,7 +75,6 @@ li {
   margin-bottom: 10px;
   display: flex;
   justify-content: space-around;
-  border-radius: 5px;
   box-shadow: 5px 5px 5px rgba(0,0,0);
 }
 
@@ -88,5 +94,26 @@ li {
   }
   .imagem-container{
     width: 8%;
+  }
+  .w3-teal > button{
+    font-size: 0.4rem; 
+    height: 0.9rem;
+    box-shadow: 1px 1px 1px rgba(255, 255, 255, 0.87);
+  }
+
+  h1{
+    font-size: 0.8rem; 
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.87);
+  }
+  input{
+    font-size: 0.2rem; 
+  }
+  #button-filter, #button-reset{
+    font-size: 0.4rem; 
+  }
+
+  #nav{
+    height: 10%;
+    margin: 0;
   }
 }
