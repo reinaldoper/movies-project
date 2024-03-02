@@ -3,6 +3,8 @@ import Search from '../components/Search'
 import { MemoryRouter } from "react-router-dom";
 import searchMock from './mocks/searchMock'
 
+import Swal from 'sweetalert2'; 
+
 const { results } = searchMock();
 
 
@@ -16,14 +18,7 @@ import fetchMock from 'node-fetch';
 
 
 describe('Should return Search component.', () => {
-  beforeEach(() => {
-    jest.spyOn(window, 'alert').mockImplementation(() => {});
-  });
-
-  afterEach(() => {
-    jest.restoreAllMocks();
-  });
-  
+ 
   it('should return "Do your movie search"', async () => {
     fetchMock.mockResolvedValueOnce({
       json: async () => ({ results: results }),
@@ -61,9 +56,7 @@ describe('Should return Search component.', () => {
   });
 
   it('should return "Alert"',  () => {
-    fetchMock.mockResolvedValueOnce({
-      json: async () => ({ results: results }),
-    });
+    const mockFire = jest.spyOn(Swal, 'fire');
     render(
       <MemoryRouter>
         <Search />
@@ -77,7 +70,7 @@ describe('Should return Search component.', () => {
     expect(searchButton).toBeInTheDocument();
 
     fireEvent.click(searchButton);
-    expect(window.alert).toHaveBeenCalledWith('Please select a search term');
+    expect(mockFire).toHaveBeenCalledWith('Hey user!', 'Please select a search term', 'info');
 
   });
 

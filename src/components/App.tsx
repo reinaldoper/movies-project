@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Grid, GridColumn } from '@progress/kendo-react-grid';
 import { fetchMoviesTop } from '../service/fetchApi';
-import { IMovie, BackdropCellProps } from '../types/Ttypes';
+import { IMovie, BackdropCellProps, IFilter } from '../types/Ttypes';
 import { filterBy } from '@progress/kendo-data-query';
 import { GridPageChangeEvent } from '@progress/kendo-react-grid';
 import { urlImage } from '../environment/environment'
@@ -20,9 +20,9 @@ const BackdropCell: React.FC<BackdropCellProps> = ({ dataItem }) => (
 
 function App() {
   const [movies, setMovies] = useState<IMovie[]>([]);
-  const [filters, setFilters] = useState<Array<{ field: string; operator: string; value: string; }>>([]);
-  const [skip, setSkip] = useState(0);
-  const [filterValue, setFilterValue] = useState('');
+  const [filters, setFilters] = useState<Array<IFilter>>([]);
+  const [skip, setSkip] = useState<number>(0);
+  const [filterValue, setFilterValue] = useState<string>('');
 
   useEffect(() => {
     const fetchMovies = async () => {

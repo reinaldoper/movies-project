@@ -1,7 +1,7 @@
 import { fetchMoviesSearch } from "../service/fetchApi";
 import { useState } from "react";
 import { Grid, GridColumn } from '@progress/kendo-react-grid';
-import { IMovie, BackdropCellProps } from '../types/Ttypes';
+import { IMovie, BackdropCellProps, IChangeSearcher } from '../types/Ttypes';
 import { GridPageChangeEvent } from '@progress/kendo-react-grid';
 import { urlImage } from '../environment/environment'
 import ButtonFilter from '../buttons/ButtonFilter';
@@ -9,6 +9,7 @@ import ButtonReset from '../buttons/ButtonReset';
 import movie from '../assets/movie.png'
 
 import '../styles/App.css'
+import Swal from "sweetalert2";
 
 
 const BackdropCell: React.FC<BackdropCellProps> = ({ dataItem }) => (
@@ -23,7 +24,7 @@ const BackdropCell: React.FC<BackdropCellProps> = ({ dataItem }) => (
 
 const Search = () => {
   const [movies, setMovies] = useState<IMovie[]>([]);
-  const [skip, setSkip] = useState(0);
+  const [skip, setSkip] = useState<number>(0);
   const [filterValue, setFilterValue] = useState<string>('');
   const [reset, setReset] = useState<boolean>(true);
 
@@ -32,14 +33,13 @@ const Search = () => {
     setSkip(event.page.skip);
   };
 
-  const handleFilterChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFilterChange = (e: IChangeSearcher) => {
     setFilterValue(e.target.value);
-    
   };
 
   const handleFilterClick = async () => {
     if (filterValue.length === 0) {
-      alert("Please select a search term");
+      Swal.fire('Hey user!', 'Please select a search term', 'info');
     } else {
       const { results } = await fetchMoviesSearch(filterValue);
       setMovies(results);

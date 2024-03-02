@@ -24,3 +24,19 @@ export interface ButtonFilterProps {
   onClick: MouseEventHandler<HTMLButtonElement>;
   name: string;
 }
+
+export interface IButtonNav {
+  currentTarget: {
+    name: string;
+  };
+}
+
+export interface IFilter {
+  field: string; operator: string; value: string;
+}
+
+export interface IChangeSearcher {
+  target: {
+    value: string;
+  }
+}
