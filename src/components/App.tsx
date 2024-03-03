@@ -9,6 +9,8 @@ import ButtonFilter from '../buttons/ButtonFilter';
 import ButtonReset from '../buttons/ButtonReset';
 import { format } from 'date-fns/format';
 
+import Swal from "sweetalert2";
+
 import '../styles/App.css'
 
 
@@ -23,6 +25,7 @@ function App() {
   const [filters, setFilters] = useState<Array<IFilter>>([]);
   const [skip, setSkip] = useState<number>(0);
   const [filterValue, setFilterValue] = useState<string>('');
+  const [options, setOptions] = useState<string>('')
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -47,8 +50,13 @@ function App() {
   };
 
   const handleFilterClick = () => {
-    const newFilters = [...filters, { field: 'title', operator: 'contains', value: filterValue }];
-    setFilters(newFilters);
+    if (options.length === 0) {
+      Swal.fire('Hey user!', 'Please select a filter term', 'info');
+    } else {
+      const newFilters = [...filters, { field: `${options}`, operator: 'contains', value: filterValue }];
+      setFilters(newFilters);
+    }
+
   };
 
   const handleResetFilters = () => {
@@ -56,7 +64,6 @@ function App() {
     setFilterValue('');
   };
 
-  
 
   return (
     <>
@@ -65,7 +72,14 @@ function App() {
         <>
           <h1>Movies</h1>
           <div className="w3-bar">
-            <input type="text" id="filter" placeholder='Filter title' value={filterValue} onChange={handleFilterChange} className="w3-bar-item w3-input" />
+            <select value={options} id="filter" onChange={e => setOptions(e.target.value)} >
+              <option value="">Select a filter</option>
+              <option value="title">Title</option>
+              <option value="release_date">Release_date</option>
+              <option value="original_language">Original_language</option>
+              <option value="vote_average">Vote_average</option>
+            </select>
+            <input type="text" id="filter" placeholder='Filter' value={filterValue} onChange={handleFilterChange} className="w3-bar-item w3-input" />
             <ButtonFilter onClick={handleFilterClick} name='Filter' />
             <ButtonReset onClick={handleResetFilters} name='Reset' />
           </div>

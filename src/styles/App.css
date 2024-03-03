@@ -105,7 +105,7 @@ h1 {
     font-size: 0.8rem; 
     text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.87);
   }
-  input{
+  input, select{
     font-size: 0.2rem; 
   }
   #button-filter, #button-reset{
