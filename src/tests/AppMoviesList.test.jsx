@@ -3,6 +3,8 @@ import App from '../components/App'
 import { MemoryRouter } from "react-router-dom";
 import moviesMock from './mocks/moviesMock';
 
+import Swal from 'sweetalert2'; 
+
 const { movies } = moviesMock()
 
 jest.mock('node-fetch')
@@ -44,6 +46,36 @@ describe('Should return list movies', () => {
       
       const titleMovie = screen.getByText(/The Godfather Part II/);
       expect(titleMovie).toBeInTheDocument()
+    })
+  });
+
+  it('should return error alert', async () => {
+    fetchMock.mockResolvedValueOnce({
+      json: async () => ({ results: movies }),
+    });
+
+    const mockFire = jest.spyOn(Swal, 'fire');
+    render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>
+    )
+
+    await waitFor(() => {
+      const backDrop = screen.getByText(/Backdrop/);
+      expect(backDrop).toBeTruthy();
+      
+      const filterButton = screen.getByRole('button', {  name: /filter/i})
+      expect(filterButton).toBeInTheDocument()
+      const resetButton = screen.getByRole('button', {  name: /reset/i})
+      expect(resetButton).toBeInTheDocument()
+      const title = screen.getByText(/The Shawshank Redemption/);
+      expect(title).toBeInTheDocument()
+
+      fireEvent.click(filterButton);
+      
+      expect(mockFire).toHaveBeenCalledWith('Hey user!', 'Please select a filter term', 'info');
+
     })
   });
 })
