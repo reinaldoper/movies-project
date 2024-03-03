@@ -72,7 +72,7 @@ function App() {
         <>
           <h1>Movies</h1>
           <div className="w3-bar">
-            <select value={options} id="filter" onChange={e => setOptions(e.target.value)} >
+            <select value={options} data-testId="select" id="filter" onChange={e => setOptions(e.target.value)} >
               <option value="">Select a filter</option>
               <option value="title">Title</option>
               <option value="release_date">Release_date</option>
